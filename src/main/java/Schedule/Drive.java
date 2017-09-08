@@ -3,6 +3,23 @@ package Schedule;
 public class Drive
 {
     int vehicleID;
+
+    public int getVehicleID() {
+        return vehicleID;
+    }
+
+    public int getCargoType() {
+        return cargoType;
+    }
+
+    public int getLoadPort() {
+        return loadPort;
+    }
+
+    public int getUnloadPort() {
+        return unloadPort;
+    }
+
     int cargoType;
     int loadPort;
     int unloadPort;

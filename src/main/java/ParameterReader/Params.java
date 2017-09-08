@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Reads parameters needed to initialize number of cars and ports
+ */
 public class Params implements IProblemInfo
 {
 
@@ -13,7 +16,6 @@ public class Params implements IProblemInfo
 
     public Params(String filename) throws IOException
     {
-
         String vozilaFile = "";
         String mestaFile = "";
 

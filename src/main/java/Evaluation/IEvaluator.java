@@ -1,9 +1,10 @@
 package Evaluation;
 
-import Schedule.Drive;
-import java.util.List;
+import Schedule.FullSchedule;
+
 
 public interface IEvaluator
 {
-    double evaluate(List<Drive> schedule);
+
+    double evaluate(FullSchedule schedule);
 }
