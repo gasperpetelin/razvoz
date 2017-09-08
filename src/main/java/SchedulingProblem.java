@@ -16,19 +16,16 @@ import java.util.List;
 public class SchedulingProblem extends AbstractIntegerProblem
 {
     List<IEvaluator> evaluators;
-    int[] vehicles;
     IProblemInfo info;
 
     /**
      * @param evaluators list of evaluators calculating each objective
      * @param info information about problem (number of cars, ports)
      * @param maximumScheduleLength maximum length of schedule
-     * @param vehicles list of IDs of used vehicles
      */
-    public SchedulingProblem(List<IEvaluator> evaluators, IProblemInfo info, int maximumScheduleLength, int[] vehicles)
+    public SchedulingProblem(List<IEvaluator> evaluators, IProblemInfo info, int maximumScheduleLength)
     {
         this.evaluators = evaluators;
-        this.vehicles = vehicles;
         this.info = info;
 
         // vector of {cargo_type1, load_port1, unload_port1, ...  ,cargo_typeN, load_portN, unload_portN , V1, V2, ..., Vh}

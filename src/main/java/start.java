@@ -22,17 +22,12 @@ public class start
         Params p = new Params(fileName);
         TimeEvaluator te = new TimeEvaluator("RazvozEvalDll.dll", fileName);
 
-        int[] vehicles = new int[p.getNumberOfVehicles()];
-        for (int i = 0; i < p.getNumberOfVehicles(); i++) {
-            vehicles[i] = i+1;
-        }
-
         List<IEvaluator> ls = new ArrayList<>();
 
         ls.add(te);
         ls.add(new UsedVehiclesEvaluator());
 
-        Problem<IntegerSolution> problem = new SchedulingProblem(ls, p, 5, vehicles);
+        Problem<IntegerSolution> problem = new SchedulingProblem(ls, p, 5);
         MutationOperator<IntegerSolution> mutation = new IntegerPolynomialMutation(0.5, 10) ;
 
 
