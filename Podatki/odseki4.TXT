@@ -1,0 +1,3 @@
+ 30.00  90.00  Prvi odsek
+ 30.00  130.00 Avtocesta
+ 30.00  80.00  Zadnji odsek

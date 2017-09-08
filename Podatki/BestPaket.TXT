@@ -1,0 +1,5 @@
+30 100 2000 0 3
+vozila2eps.txt
+mesta2eps.txt
+odseki2.txt
+bestspored.txt

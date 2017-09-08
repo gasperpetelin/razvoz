@@ -1,0 +1,5 @@
+30 1000 200000 0 3
+vozila2eps.txt
+mesta3eps.txt
+odseki2.txt
+spored2.txt

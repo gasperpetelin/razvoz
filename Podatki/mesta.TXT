@@ -1,0 +1,5 @@
+1  20.00  15.00  20.00 Nakladalec 1
+1  25.00  20.00  28.00 Nakladalec 2
+1  30.00  20.00  40.00 Nakladalec 3
+2  40.00  30.00  50.00 Razkladalec 1 
+2  50.00  40.00  45.00 Razkladalec 2

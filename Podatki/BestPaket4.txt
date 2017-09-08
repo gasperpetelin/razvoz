@@ -1,0 +1,5 @@
+ 35.00 1800.00 200.00 0 3
+tmpvozila4.txt
+tmpmesta4.txt
+tmpodseki.txt
+pozmet4.txt

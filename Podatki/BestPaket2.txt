@@ -1,0 +1,5 @@
+ 30.00 1000.00 200000.00 0 3
+tmpvozila2.txt
+tmpmesta2.txt
+tmpodseki.txt
+pozmet2.txt

@@ -1,0 +1,5 @@
+ 1.00 5.00 3.00 0 2
+tmpvozila1.txt
+tmpmesta1.txt
+tmpodseki.txt
+max1.txt

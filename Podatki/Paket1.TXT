@@ -1,0 +1,5 @@
+40 45 32 0 1
+vozila.txt
+mesta.txt
+odseki.txt
+spored.txt
