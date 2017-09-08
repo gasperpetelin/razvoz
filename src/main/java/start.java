@@ -20,7 +20,7 @@ public class start
     {
         String fileName = "BestPaket1.txt";
         Params p = new Params(fileName);
-        TimeEvaluator te = new TimeEvaluator("C:\\Users\\Gasper\\Desktop\\razvoz\\RazvozEvalDll.dll", fileName);
+        TimeEvaluator te = new TimeEvaluator("RazvozEvalDll.dll", fileName);
 
         int[] vehicles = new int[p.getNumberOfVehicles()];
         for (int i = 0; i < p.getNumberOfVehicles(); i++) {
