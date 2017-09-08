@@ -1,4 +1,4 @@
-# razvoz
+# Predstavitev informacije z JMetal
 
 Vektor (IntegerSolution) pri optimizaciji [C1,F1,T1,  C2,F2,T2,  ....,  CN,FN,TN,   V1,V2,Vk ] 
 
@@ -15,7 +15,7 @@ Vektor (IntegerSolution) pri optimizaciji [C1,F1,T1,  C2,F2,T2,  ....,  CN,FN,TN
 
 Dolžina vektorja = 3 * št. vozil * št. ciklov + št. vozil
 
-##Implementacija novega objectiva
+## Implementacija novega objectiva
 
 Za dodajanje novega objectiva je potrebno implementirati interface IEvaluator in razred ob zagonu poslati SchedulingProblem.
 
