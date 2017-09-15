@@ -1,7 +1,10 @@
 import Evaluation.IEvaluator;
 import Evaluation.TimeEvaluator;
 import Evaluation.UsedVehiclesEvaluator;
+import InputParsing.InputParser;
+import InputParsing.OptionsBuilder;
 import ParameterReader.Params;
+import org.apache.commons.cli.*;
 import org.uma.jmetal.algorithm.Algorithm;
 import org.uma.jmetal.algorithm.multiobjective.nsgaii.NSGAIIBuilder;
 import org.uma.jmetal.operator.MutationOperator;
@@ -16,24 +19,24 @@ import java.util.List;
 
 public class start
 {
-    public static void main(String[] args) throws IOException
-    {
+
+
+
+    public static void main(String[] args) throws IOException, ParseException {
+
+        InputParser parser = new InputParser(args);
         String fileName = "BestPaket1.txt";
         Params p = new Params(fileName);
-        TimeEvaluator te = new TimeEvaluator("RazvozEvalDll.dll", fileName);
 
-        List<IEvaluator> ls = new ArrayList<>();
-
-        ls.add(te);
-        ls.add(new UsedVehiclesEvaluator());
-
-        Problem<IntegerSolution> problem = new SchedulingProblem(ls, p, 5);
-        MutationOperator<IntegerSolution> mutation = new IntegerPolynomialMutation(0.5, 10) ;
+        List<IEvaluator> evaluators = new ArrayList<>();
+        evaluators.add(new TimeEvaluator("RazvozEvalDll.dll", fileName));
+        evaluators.add(new UsedVehiclesEvaluator());
 
 
-        Algorithm<List<IntegerSolution>> algorithm = new NSGAIIBuilder<>(problem, new NullCrossover<IntegerSolution>(), mutation)
-                .setPopulationSize(10)
-                .build();
+        Problem<IntegerSolution> problem = new SchedulingProblem(evaluators, p, parser.maximumNumberOfCycles());
+
+
+        Algorithm<List<IntegerSolution>> algorithm = parser.getAlgorithms(problem);
 
         algorithm.run();
         List<IntegerSolution> population = algorithm.getResult();
