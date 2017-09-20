@@ -1,4 +1,4 @@
- 30.00 1000.00 200000.00 0 3
+ 5.00 50.00 2000.00 0 3
 tmpvozila3.txt
 tmpmesta3.txt
 tmpodseki.txt

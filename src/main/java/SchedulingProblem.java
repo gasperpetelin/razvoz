@@ -1,7 +1,9 @@
 import Evaluation.IEvaluator;
+import FileLogging.IFileLogger;
 import ParameterReader.IProblemInfo;
 import Schedule.Drive;
 import Schedule.FullSchedule;
+import Util.IntegerSolutionToFullSchedule;
 import org.uma.jmetal.problem.impl.AbstractIntegerProblem;
 import org.uma.jmetal.solution.IntegerSolution;
 
@@ -17,16 +19,20 @@ public class SchedulingProblem extends AbstractIntegerProblem
 {
     List<IEvaluator> evaluators;
     IProblemInfo info;
+    IFileLogger logger;
+    IntegerSolutionToFullSchedule mapper;
 
     /**
      * @param evaluators list of evaluators calculating each objective
      * @param info information about problem (number of cars, ports)
      * @param maximumScheduleLength maximum length of schedule
      */
-    public SchedulingProblem(List<IEvaluator> evaluators, IProblemInfo info, int maximumScheduleLength)
+    public SchedulingProblem(List<IEvaluator> evaluators, IProblemInfo info, int maximumScheduleLength, IFileLogger logger)
     {
+        this.logger=logger;
         this.evaluators = evaluators;
         this.info = info;
+        this.mapper = new IntegerSolutionToFullSchedule(info);
 
         // vector of {cargo_type1, load_port1, unload_port1, ...  ,cargo_typeN, load_portN, unload_portN , V1, V2, ..., Vh}
         //Vh - bitna spremenljivka - uporabimo vozilo h
@@ -69,28 +75,8 @@ public class SchedulingProblem extends AbstractIntegerProblem
     @Override
     public void evaluate(IntegerSolution solution)
     {
-        //Mapping solution to drive classes
-        int driver = 0;
-        List<Drive> drives = new ArrayList<>();
-
-        for (int i = 0; i < solution.getNumberOfVariables() - this.info.getNumberOfVehicles(); i+=3)
-        {
-            drives.add(new Drive((driver%this.info.getNumberOfVehicles()) + 1,
-                    solution.getVariableValue(i),
-                    solution.getVariableValue(i+1),
-                    solution.getVariableValue(i+2)));
-            driver++;
-        }
-
-        //Mapping last bits to used vehicles
-        HashSet<Integer> usedVehicles = new HashSet<>();
-        for (int i = 0; i < info.getNumberOfVehicles(); i++)
-        {
-            if(solution.getVariableValue(driver*3 + i)==1)
-                usedVehicles.add(i+1);
-        }
-
-        FullSchedule fullSchedule = new FullSchedule(drives, usedVehicles);
+        //Map IntegerSolution to FullSchedule
+        FullSchedule fullSchedule = this.mapper.toFullSchedule(solution);
 
         int obj = 0;
         for(IEvaluator eval:this.evaluators)
@@ -98,5 +84,10 @@ public class SchedulingProblem extends AbstractIntegerProblem
             solution.setObjective(obj, eval.evaluate(fullSchedule));
             obj++;
         }
+
+        this.logger.log(solution);
+
+
+
     }
 }

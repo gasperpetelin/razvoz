@@ -18,7 +18,7 @@ public class TimeEvaluator implements IEvaluator
     {
         //If no vehicles are used, nothing gets done.
         if(schedule.getNumberOfUsedVehicles()==0) {
-            return 100_000; //Large number to symbolize inf time.
+            return 100_000_000; //Large number to symbolize inf time.
         }
 
         List<Drive> drives = schedule.getUsedDrives();
@@ -37,7 +37,6 @@ public class TimeEvaluator implements IEvaluator
 //
         lib.LoadSpored(dllarray, drives.size()*7);
         double eval = lib.Evaluation();
-//
         if (eval<0)
             eval = 100_000_000+eval;
         //System.out.println(eval);

@@ -37,6 +37,7 @@ public class MutationFactory
                     throw new ParseException("No mutation operation with name: " + mutationType);
             }
         }
-        return null;
+        System.out.println("No mutation specified. Null mutation will be used");
+        return new NullMutation<>();
     }
 }

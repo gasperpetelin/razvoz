@@ -39,6 +39,7 @@ public class CrossoverFactory
                     throw new ParseException("No crossover operation with name: " + crossoverType);
             }
         }
-        return null;
+        System.out.println("No crossover specified. Null crossover will be used");
+        return new NullCrossover<>();
     }
 }

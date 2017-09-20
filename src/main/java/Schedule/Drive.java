@@ -44,4 +44,10 @@ public class Drive
         arr[6]=0;//unload prioritet
         return arr;
     }
+
+    @Override
+    public String toString()
+    {
+        return this.vehicleID + " 0 " + this.cargoType + " " + this.loadPort + " 0 " + this.unloadPort + " 0";
+    }
 }

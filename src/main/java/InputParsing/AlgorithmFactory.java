@@ -38,15 +38,6 @@ public class AlgorithmFactory
                             algo = builder.build();
                         }
                         break;
-                    //case "ibea":
-                    //    algo = new IBEABuilder(problem)
-                    //            .setArchiveSize(5)
-                    //            .setCrossover(cross)
-                    //            .setMutation(mut)
-                    //            .setMaxEvaluations(maxeval)
-                    //            .setPopulationSize(popSize)
-                    //            .build();
-                    //    break;
                     case "random":
                         if(parameters.length==2)
                         {
@@ -60,12 +51,6 @@ public class AlgorithmFactory
                             }
                         }
                         break;
-                    //case "gde3":
-                    //    algo = new GDE3Builder(problem)
-                    //            .setPopulationSize(popSize)
-                    //            .setMaxEvaluations(maxeval)
-                    //            .build();
-                    //    break;
                     case "spea2":
                         if(parameters.length==3)
                         {
@@ -102,7 +87,8 @@ public class AlgorithmFactory
             }
             return algo;
         }
-        return null;
+        System.out.println("No algorithm specified. Random search will be used");
+        return new RandomSearchBuilder(problem).build();
 
     }
 }

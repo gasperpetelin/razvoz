@@ -1,15 +1,15 @@
 package InputParsing;
 
-import Evaluation.IEvaluator;
-import Evaluation.TimeEvaluator;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.ParseException;
 import org.uma.jmetal.algorithm.Algorithm;
 import org.uma.jmetal.operator.CrossoverOperator;
 import org.uma.jmetal.operator.MutationOperator;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.solution.IntegerSolution;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InputParser
